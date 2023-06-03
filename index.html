@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据艺术可视化</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <!-- <svg id="mySVG" width="960" height="600"></svg>
+    <canvas id="chart" width="600" height="100"></canvas> -->
+    <div class="Ming">
+        <div id="sankey"></div>
+    </div>
+    
+
+
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="./js/static/echarts.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.0/dist/echarts.min.js"></script> -->
+
+    <!-- <script src="./js/worldCloud.js"></script> -->
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/wordcloud2.js/1.0.6/wordcloud2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
+    <link href="./fontStyle/cangqiong.ttf" rel="stylesheet" type="text/css"> -->
+    <script src="./js/chordLink.js"></script>
+
+    <script>
+     // 获取你定义的存放图表的 DOM 容器
+// var chartDom = document.getElementById('sankey');
+
+// // 使用ECharts初始化这个DOM容器，返回实例对象（myChart）
+// var chordmyChart = echarts.init(chartDom);
+// var city={
+//   '北京':'#c23531',
+//   '上海':'#2f4554',
+//   '广州':'#61a0a8',
+//   '深圳':'#d48265',
+//   '香港':'#749f83'
+// }
+// var population=[
+//   {source: "广州", target: "北京", value: 4567},
+//   {source: "广州", target: "上海", value: 2060},
+//   {source: "深圳", target: "北京", value: 1234},
+//   {source: "深圳", target: "上海", value: 124},
+//   {source: "香港", target: "北京", value: 3714},
+//   {source: "香港", target: "上海", value: 3234}];
+// var data2=[];
+// var citylist=[];
+// for(var key in city){
+//   citylist.push(
+//       {name: key,itemStyle: {color:city[key]}}
+//   )
+// }
+// for(var i=0;i<population.length;i++){
+//   var color=new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+//           offset: 0,
+//           color: city[population[i].source]
+//       },{
+//           offset: 1,
+//           color: city[population[i].target]
+//       }]
+//   )
+//   data2.push(
+//       {source: population[i].source,
+//       target: population[i].target,
+//       value: population[i].value,
+//           lineStyle: {
+//           color:color
+//           }
+//       }
+//   )
+// }
+// const chordoption = {
+//   title: {
+//       text: '桑基图之城市移民人口统计',
+//       subtext: 'By 佯佯DESIGNER',
+//       top: 'top',
+//       left: '35%'
+//   },
+//   tooltip: {
+//       trigger: 'item',
+//       triggerOn: 'mousemove'
+//   },
+//   series: [
+//       {
+//           type: 'sankey',
+//           data: citylist,
+//           links: data2,
+//           focusNodeAdjacency: 'allEdges',
+//           itemStyle: {
+//               borderWidth: 1,
+//               color:'#1b6199',
+//               borderColor: '#fff'
+//           },
+//           lineStyle: {
+//               curveness: 0.5,
+//               opacity:0.5
+//           }
+//       }
+//   ]
+// }
+
+
+// // 使用刚指定的配置项和数据显示图表。
+// chordmyChart.setOption(chordoption);
+
+
+//------------------------------------------------------------------------
+        // // 读取CSV文件，并在加载完成后触发回调函数
+        // d3.csv("data/poemsMing.csv").then(function (data) {
+
+        //     // 统计某一列的频次
+        //     var words = {};
+        //     var column_name = "author";
+        //     data.forEach(function (d) {
+        //         if (d[column_name] in words) {
+        //             words[d[column_name]] += 1;
+        //         } else {
+        //             words[d[column_name]] = 1;
+        //         }
+        //     });
+
+        //     console.log(words)
+        //     // 将频次统计转化为D3可接受的words格式
+        //     var word_list = [];
+        //     for (var key in words) {
+        //         word_list.push({
+        //             text: key,
+        //             size: words[key] * 10 // 按照出现次数确定字体大小，需要调整具体的系数
+        //         });
+        //     }
+
+        //     // 定义布局
+        //     var layout = d3.layout.cloud()
+        //         .size([500, 500])
+        //         .words(word_list)
+        //         .padding(5)
+        //         .rotate(function () { return Math.random() * 90; })
+        //         .fontSize(function (d) { return d.size; })
+        //         .on("end", draw);
+
+        //     // 绘制词云图
+        //     function draw(word_list) {
+        //         d3.select("#mySVG")
+        //             .append("svg")
+        //             .attr("width", layout.size()[0])
+        //             .attr("height", layout.size()[1])
+        //             .append("g")
+        //             .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+        //             .selectAll("text")
+        //             .data(word_list)
+        //             .enter().append("text")
+        //             .style("font-size", function (d) { return d.size + "px"; })
+        //             .style("fill", "steelblue")
+        //             .attr("text-anchor", "middle")
+        //             .attr("transform", function (d) {
+        //                 return "translate(" + [d.x, d.y] + ")";
+        //             })
+        //             .text(function (d) { return d.text; });
+        //     }
+
+        //     // 开始布局
+        //     layout.start();
+
+        // });
+
+      //   const data = [
+      //   { name: 'A', value: 10 },
+      //   { name: 'B', value: 20 },
+      //   { name: 'C', value: 15 },
+      //   { name: 'D', value: 25 }
+      // ];
+
+      // const canvas = document.getElementById('chart');
+      // const ctx = canvas.getContext('2d');
+
+      // // 设置字体和标题
+      // ctx.font = '24px Arial';
+      // ctx.fillText('横向条形图', canvas.width / 2, 30);
+
+      // // 定义矩形元素
+      // const barHeight = 20;
+      // const barWidthScale = d3.scaleLinear()
+      //   .domain([0, d3.max(data, d => d.value)])
+      //   .range([0, canvas.width - 90]);
+
+      // // 遍历绘制矩形元素
+      // let y = 60;
+      // for (let i = 0; i < data.length; i++) {
+      //   const d = data[i];
+      //   const barWidth = barWidthScale(d.value);
+      //   const color = i % 2 === 0 ? '#4CAF50' : '#2196F3';
+      //   ctx.fillStyle = color;
+      //   ctx.fillRect(60, y, barWidth, barHeight);
+      //   y += 30;
+      // }
+    </script>
+
+</body>
+
+</html>

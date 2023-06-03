@@ -1,0 +1,263 @@
+/* body {
+  background-color: #e3d5ae;
+  width: 100%;
+  height: 100%;
+  /* background-image: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.8) 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 100%); */
+/* }  */
+
+body .all {
+  float: left;
+  margin: 50px;
+  /* background-color: rgba(247, 240, 229, 0.5); */
+  width: 100%;
+  /* background-color: pink; */
+}
+
+body .Ming {
+  float: left;
+  background-color: #ede2ca;
+  width: 100%;
+  /* background-color: pink; */
+}
+
+.all .MapBase {
+  float: left;
+  background-image: url("/img/mapBackground.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 900px;
+  width: 40%;
+}
+
+.all .MapBase #map {
+  float: left;
+  margin-top: 120px;
+  margin-left: 120px;
+  height: 600px;
+  width: 600px;
+  border: small solid #a1afc9;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.all .season img{
+  float: left;
+  margin-left: 100px;
+  margin-top: 50px;
+  height: 450px;
+  /* width: 200px; */
+  border-radius: 5%;
+  overflow: hidden;
+}
+
+.all .event{
+  float: left;
+  /* margin-top: 50px; */
+}
+
+.all .event #eventCanvas{
+  float: left;
+
+}
+
+.all .event #detailBox{
+  float: left;
+}
+
+.all .event #title{
+  float: left;
+  margin-left: 100px;
+  margin-top: 100px;
+  width: 30%;
+}
+
+.all .event #content{
+  float: left;
+  margin-left: 100px;
+  margin-top: 30px;
+  width: 30%;
+}
+
+.picture {
+  background: rgba(255, 255, 255,0.8);
+  backdrop-filter: blur(10px);
+  transform: translate(50%, 50%);
+  border-radius: 6px;
+  width: 50%;
+  height: 50%;
+  cursor: pointer;
+  padding :20px;
+  position:fixed;
+}
+
+.picture h2,
+.picture p {
+  margin: 60px; /* 解决默认的上下 margin */
+  text-align: center; /* 水平居中 */
+}
+.picture p {
+  flex: 1; /* 让 p 占据剩余高度空间 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.close-btn {
+  background: url('../img/icon/close.png') no-repeat center center;
+  background-size: contain;
+  width: 32px;
+  height: 32px;
+  border: none;
+  cursor: pointer;
+}
+
+.all .MapBase #incident {
+  float: right;
+  margin-top: 120px;
+  margin-left: 120px;
+}
+
+ /* 样式 */
+ .timeline {
+  position: relative;
+  margin: 50px auto;
+  height: 10px;
+  background-color: #dadada;
+  border-radius: 5px;
+}
+
+.timeline-event {
+  position: absolute;
+  bottom: -30px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #000;
+  cursor: pointer;
+}
+
+
+/* .all #mySVG {
+  float: left;
+  width: 30%;
+  height: 400px;
+}
+
+#mySVG img {
+  margin-top: 100px;
+  width: 350px;
+  height: 350px;
+} */
+
+.all .second{
+  float: left;
+}
+
+.all .second .peomsCount {
+  float: left;
+  height: 500px;
+  width: 500px;
+}
+
+.all .second .wordcloud {
+  /* margin-top: 75px;
+  margin-right: 50px; */
+  margin: auto;
+  float: right;
+  /* width: 620px;
+  height: 330px; */
+}
+
+.third #literary {
+  margin-top: 50px;
+  float: left;
+  height: 450px;
+  /* width: 50%; */
+}
+
+.fifth {
+  margin-top: 50px;
+  float: right;
+  width:1300px;
+}
+
+.fifth #literary_person {
+  float: right;
+  height: 400px;
+  /* width: 50%; */
+}
+
+.forth {
+  float: left;
+  margin-top: 50px;
+  width: 100%;
+  border-radius: 10%;
+}
+
+.forth #artist {
+  float: left;
+  margin-left: 50px;
+  margin-top: 30px;
+  height: 250px;
+  border-radius: 10%;
+}
+
+.forth #learner {
+  float: left;
+  margin-left: 80px;
+  margin-top: 20px;
+  height: 200px;
+  border-radius: 10%;
+}
+
+.forth #thinker {
+  float: left;
+margin-left: 100px;
+margin-top: 100px;
+  height: 150px;
+}
+
+.forth #literary_identity {
+  float: right;
+  margin-right: 50px;
+  height: 400px;
+}
+
+
+.bar {
+  border-radius: 50%;
+  overflow: hidden;
+  /* 超出部分隐藏 */
+}
+
+.all #sankey {
+  margin-top: 30px;
+  float: left;
+  height: 1000px;
+  width: 100%;
+  font-size: 15;
+  color: '#000';
+  writing-mode: 'vertical-lr';
+
+}
+
+.Ming #sankey {
+  margin-top: 30px;
+  float: left;
+  height: 1000px;
+  width: 100%;
+  font-size: 15;
+  /* color: '#000'; */
+  writing-mode: 'vertical-lr';
+
+}
+/* 定义字体规则 */
+@font-face {
+  font-family: "My Custom Font";
+  src: url("../fontStyle/cangqiong.ttf");
+}
+
+/* 应用于词云元素 */
+text {
+  font-family: "My Custom Font", sans-serif;
+}
